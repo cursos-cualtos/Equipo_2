@@ -6,23 +6,23 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-if not session.get('logged_in'):
-return "unauthorized" 
-else:
-return "authorized" 
+    if not session.get('logged_in'):
+        return "unauthorized" 
+    else:
+        return "authorized" 
 
 @app.route('/login', methods=['POST'])
 def do_admin_login():
-if request.form['username'] == 'admin':
-session['logged_in'] = True
-else:
-flash('unauthorized')
-return home()
+    if request.form['username'] == 'admin':
+        session['logged_in'] = True
+    else:
+        flash('unauthorized')
+    return home()
 
 @app.route("/logout")
 def logout():
-session['logged_in'] = False
-return home()
+    session['logged_in'] = False
+    return home()
 
 if __name__ == "__main__":
 app.secret_key = os.urandom(12)
