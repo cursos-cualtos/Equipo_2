@@ -3,6 +3,7 @@ from data import db
 from utils import get_all_messages, get_auth, get_message
 
 app = Flask(__name__)
+app.secret_key = b'\xc6g\xa9(\x08$W\xbc\xf2\xc7\x1d\x81\x17\xdf\xc5R'
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
