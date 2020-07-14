@@ -9,7 +9,7 @@ def index():
     return json.dumps(message)
 
 @app.route('/auth/<user>')
-def index(user):
+def index_user(user):
     data = ["admin", "user1", "user2", "user3"]
 
     if user in data:
