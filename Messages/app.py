@@ -1,4 +1,5 @@
 from flask import Flask
+from db_utils import add_message
 import json
 
 mensajes = [
@@ -33,6 +34,10 @@ def messages():
 @app.route('/messages/<int:id>')
 def messages_id(id):
     return json.dumps(mensajes[id])
+
+@app.route('/messages/add')
+def message_add(data):
+    add_message(data)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5002, debug=True)
