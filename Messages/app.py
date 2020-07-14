@@ -35,9 +35,9 @@ def messages():
 def messages_id(id):
     return json.dumps(mensajes[id])
 
-@app.route('/messages/add')
+@app.route('/messages/add', methods=['POST'])
 def message_add(data):
     add_message(data)
-
+    
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5002, debug=True)
