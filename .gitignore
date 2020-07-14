@@ -6,3 +6,5 @@ share/
 pyvenv.cfg
 __pycache__/
 Scripts/
+Autenticacion/__pycache__/
+Messages/__pycache__/
