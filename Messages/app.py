@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask , request
 from db_utils import add_message
 import json
 
@@ -36,8 +36,11 @@ def messages_id(id):
     return json.dumps(mensajes[id])
 
 @app.route('/messages/add', methods=['GET', 'POST'])
-def message_add(data):
-    add_message(data)
+def message_add():
+    document_id = add_message(request.json)
+    response = {'document_id': str(document_id)}
+    return response
+    
     
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5002, debug=True)
