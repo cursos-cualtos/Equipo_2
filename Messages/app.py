@@ -1,17 +1,38 @@
 from flask import Flask
 import json
 
+mensajes = [
+    {
+        'message': 'hello',
+        'status': 'OK',
+        'user': 'someone'
+    },
+    {
+        'message': 'hello',
+        'status': 'NOT OK',
+        'user': 'someone'
+    },
+    {
+        'message': 'hello',
+        'status': 'OK',
+        'user': 'someone'
+    },
+    {
+        'message': 'hello',
+        'status': 'NOT OK',
+        'user': 'someone'
+    }
+]
+
 app = Flask(__name__)
 
 @app.route('/messages')
 def messages():
-    message = {'message': 'Mensajes para usuarios',}
-    return json.dumps(message)
+    return json.dumps(mensajes)
 
-@app.route('/messages/<id>')
+@app.route('/messages/<int:id>')
 def messages_id(id):
-    message = {'message': 'Estado del usuario', 'status': 'authorized', 'user': id}
-    return json.dumps(message)
+    return json.dumps(mensajes[id])
 
 if __name__ == "__main__":
-    app.run(port=5002)
+    app.run(host='0.0.0.0', port=5002, debug=True)
