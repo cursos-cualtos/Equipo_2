@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from flask import Flask , request
+=======
+from flask import Flask, request
+>>>>>>> 357ee2ff672e74884d99579fac26873988f91b28
 from db_utils import add_message
 import json
 
