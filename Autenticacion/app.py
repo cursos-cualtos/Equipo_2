@@ -1,29 +1,32 @@
 from flask import Flask
-from flask import Flask, flash, redirect, render_template, request, session, abort
-import os
+import json
 
 app = Flask(__name__)
 
 @app.route('/')
-def home():
-    if not session.get('logged_in'):
-        return "unauthorized" 
-    else:
-        return "authorized" 
+def index():
+    message = {'message': 'Welcome to the app!'}
+    return json.dumps(message)
 
-@app.route('/login', methods=['POST'])
-def do_admin_login():
-    if request.form['username'] == 'admin':
-        session['logged_in'] = True
-    else:
-        flash('unauthorized')
-    return home()
+@app.route('/auth/<user>')
+def index(user):
+    data = ["admin", "user1", "user2", "user3"]
 
-@app.route("/logout")
-def logout():
-    session['logged_in'] = False
-    return home()
+    if user in data:
+        message = {'status':'authorized'}
+    else:
+        message = {'status':'unauthorized'}
+
+    return json.dumps(message)
+
+@app.route('/greeting/<string:name>')
+def gretting_by_name(name):
+    message = {'message': 'Hello ' + name}
+    return json.dumps(message)
+
+@app.route('/add', methods=['GET', 'POST'])
+def add():
+    return ''
 
 if __name__ == "__main__":
-    app.secret_key = os.urandom(12)
-    app.run(debug=True,host='0.0.0.0', port=5001)
+    app.run(port=5001)
