@@ -1,0 +1,15 @@
+[{
+  "_id": {
+    "$oid": "5f0e35a5cf65cc9276f7c32f"
+  },
+  "message": "hello",
+  "status": "Ok",
+  "user": "admin"
+},{
+  "_id": {
+    "$oid": "5f0e3605cf65cc9276f7c331"
+  },
+  "message": "Who is it?",
+  "status": "NOT OK",
+  "user": "user1"
+}]
