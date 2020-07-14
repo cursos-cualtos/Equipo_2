@@ -4,6 +4,10 @@ client = MongoClient('localhost', 27017)
 db = client['microservices-course']
 collection = db.messages
 
+@app.route('/messages/add')
+def message_add(data):
+    add_message(data)
+
 def get_all_messages():
     cursor = collection.find()
     return list(cursor)
