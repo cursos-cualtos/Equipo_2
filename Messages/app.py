@@ -5,22 +5,22 @@ mensajes = [
     {
         'message': 'hello',
         'status': 'OK',
-        'user': 'someone'
+        'user': 'admin'
     },
     {
-        'message': 'hello',
+        'message': 'Who is it?',
         'status': 'NOT OK',
-        'user': 'someone'
+        'user': 'user1'
     },
     {
-        'message': 'hello',
+        'message': 'Hi!',
         'status': 'OK',
-        'user': 'someone'
+        'user': 'user2'
     },
     {
-        'message': 'hello',
+        'message': 'Ein Fremder',
         'status': 'NOT OK',
-        'user': 'someone'
+        'user': 'user3'
     }
 ]
 
