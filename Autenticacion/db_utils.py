@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 
 client = MongoClient('localhost', 27017)
 db = client['microservices-course']
@@ -9,7 +10,7 @@ def get_all_messages():
     return list(cursor)
 
 def get_message(id):
-    result = collection.find_one({'_id': id})
+    result = collection.find_one({'_id': ObjectId(id)})
     return result
 
 def add_message(data):
@@ -17,6 +18,6 @@ def add_message(data):
     return id
 
 def edit_message(id, data):
-    result = collection.update_one({'_id': id}, 
+    result = collection.update_one({'_id': ObjectId(id)}, 
         {'$set': data})
     return str(result.modified_count)
