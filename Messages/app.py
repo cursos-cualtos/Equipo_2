@@ -37,10 +37,7 @@ def messages_id(id):
 
 @app.route('/messages/add', methods=['GET', 'POST'])
 def message_add():
-    document_id = add_message(request.json)
-    response = {'document_id': str(document_id)}
-    return response
-    
+    return {'document_id': str(add_message(request.json))}
     
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5002, debug=True)
